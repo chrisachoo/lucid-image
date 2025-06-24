@@ -52,7 +52,10 @@ export default antfu(
 			"perfectionist/sort-maps": "error",
 			"perfectionist/sort-named-exports": "error",
 			"perfectionist/sort-named-imports": "error",
-			"perfectionist/sort-objects": ["error", { order: "asc", type: "alphabetical" }],
+			"perfectionist/sort-objects": [
+				"error",
+				{ order: "asc", type: "alphabetical" }
+			],
 			"style/comma-dangle": ["error", { functions: "never" }],
 			"ts/consistent-type-definitions": ["error", "type"],
 			"ts/no-redeclare": "off",

@@ -12,7 +12,8 @@
 		"build": "tsup",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
-		"format": "prettier . --write"
+		"format": "prettier . --write",
+		"prepare": "husky"
 	},
 	"devDependencies": {
 		"@antfu/eslint-config": "^4.16.1",
@@ -21,6 +22,9 @@
 		"eslint-plugin-format": "^1.0.1",
 		"eslint-plugin-react-hooks": "^5.2.0",
 		"eslint-plugin-react-refresh": "^0.4.20",
+		"husky": "^9.1.7",
+		"lint-staged": "^16.1.2",
+		"prettier": "3.6.0",
 		"react": "^18",
 		"react-dom": "^18",
 		"tsup": "^8.5.0",
@@ -43,6 +47,10 @@
 		"smart-image"
 	],
 	"homepage": "https://github.com/chrisachoo/smart-image#readme",
+	"lint-staged": {
+		"*.{json,md}": "pnpm format",
+		"*.{ts,tsx}": "pnpm lint"
+	},
 	"engines": {
 		"node": ">=18"
 	}
