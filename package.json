@@ -1,7 +1,7 @@
 {
-	"name": "smart-image",
+	"name": "lucid-image",
 	"version": "1.0.0",
-	"description": "A lightweight React <Image> component with lazy loading, blur-up placeholder & fallback support",
+	"description": "A lightweight React image component with blur-up preview, lazy loading, and graceful fallback support.",
 	"main": "dist/index.cjs",
 	"module": "dist/index.mjs",
 	"types": "dist/index.d.ts",
@@ -40,18 +40,19 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/chrisachoo/smart-image.git"
+		"url": "https://github.com/chrisachoo/lucide-image.git"
 	},
 	"keywords": [
 		"react",
 		"image",
-		"lazy-loading",
-		"blur-up",
+		"blur",
 		"fallback",
+		"lazy-load",
+		"lucid-image",
 		"react-component",
-		"smart-image"
+		"lightweight"
 	],
-	"homepage": "https://github.com/chrisachoo/smart-image#readme",
+	"homepage": "https://github.com/chrisachoo/lucide-image#readme",
 	"lint-staged": {
 		"*.{json,md}": "pnpm format",
 		"*.{ts,tsx}": "pnpm lint:fix"
