@@ -1,2 +1,2 @@
-export { SmartImage } from "./smart-image"
-export type { SmartImageProps } from "./smart-image"
+export { LucideImage } from "./lucide-image"
+export type { LucideImageProps } from "./lucide-image"

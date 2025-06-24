@@ -1,14 +1,14 @@
 import type { ImgHTMLAttributes } from "react"
 import React, { useState } from "react"
 
-export type SmartImageProps = {
+export type LucideImageProps = {
 	src: string
 	fallbackSrc?: string
 	blurSrc?: string
 	basePath?: string
 } & ImgHTMLAttributes<HTMLImageElement>
 
-export function SmartImage({
+export function LucideImage({
 	alt = "",
 	basePath = "",
 	blurSrc,
@@ -17,7 +17,7 @@ export function SmartImage({
 	src,
 	style,
 	...rest
-}: SmartImageProps): React.ReactElement {
+}: LucideImageProps): React.ReactElement {
 	const [hasError, setHasError] = useState(false)
 	const [loaded, setLoaded] = useState(false)
 
