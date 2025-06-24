@@ -4,6 +4,9 @@ export default defineConfig({
 	clean: true,
 	dts: true,
 	entry: ["src/index.ts"],
-	external: ["react"],
-	format: ["esm", "cjs"]
+	format: ["esm", "cjs"],
+	minify: true,
+	outDir: "dist",
+	sourcemap: true,
+	target: "esnext"
 })

@@ -1,0 +1,23 @@
+# Exclude source and dev files from the published package
+src/
+tsconfig.json
+tsup.config.ts
+.vscode/
+node_modules/
+coverage/
+test/
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+
+# Exclude docs and meta
+README.md
+.gitignore
+.npmignore
+.prettier*
+.eslintrc*
+.editorconfig
+
+# Git-specific
+.git/

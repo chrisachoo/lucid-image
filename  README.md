@@ -26,7 +26,8 @@ npm install react react-dom
 
 ```tsx
 import { SmartImage } from "smart-image"
-;<SmartImage
+
+<SmartImage
 	src="/images/car.jpg"
 	alt="Car"
 	fallbackSrc="/images/fallback.jpg"
