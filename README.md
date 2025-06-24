@@ -30,15 +30,15 @@ yarn add lucid-image
 ## 🛠️ Usage
 
 ```tsx
-import { SmartImage } from 'lucid-image'
+import { SmartImage } from "lucid-image"
 
-<SmartImage
-  src="/images/photo.jpg"          // required
-  alt="Sample Image"              // optional alt text
-  blurSrc="/images/photo-blur.jpg" // optional low-res placeholder
-  fallbackSrc="/images/fallback.jpg" // optional fallback image
-  width={300}
-  style={{ borderRadius: 8 }}
+;<SmartImage
+	src="/images/photo.jpg" // required
+	alt="Sample Image" // optional alt text
+	blurSrc="/images/photo-blur.jpg" // optional low-res placeholder
+	fallbackSrc="/images/fallback.jpg" // optional fallback image
+	width={300}
+	style={{ borderRadius: 8 }}
 />
 ```
 
@@ -62,16 +62,16 @@ Ensure your images are placed under `example/public/images/`.
 
 ## 🧰 Props
 
-| Prop         | Type     | Default    | Description                              |
-|--------------|----------|------------|------------------------------------------|
-| `src`        | string   | —          | Main image source (local or external)     |
-| `fallbackSrc`| string   | —          | Optional fallback image if main fails     |
-| `blurSrc`    | string   | —          | Optional placeholder shown while loading  |
-| `basePath`   | string   | `""`       | Base path prefix for relative `src`       |
-| `alt`        | string   | `""`       | Alternative text for accessibility        |
-| `loading`    | string   | `"lazy"`   | Native lazy-loading behavior              |
-| `style`      | object   | —          | Inline styles passed to the `img` tag     |
-| ...rest      | `img` props | —       | Native HTML `<img>` props supported       |
+| Prop          | Type        | Default  | Description                              |
+| ------------- | ----------- | -------- | ---------------------------------------- |
+| `src`         | string      | —        | Main image source (local or external)    |
+| `fallbackSrc` | string      | —        | Optional fallback image if main fails    |
+| `blurSrc`     | string      | —        | Optional placeholder shown while loading |
+| `basePath`    | string      | `""`     | Base path prefix for relative `src`      |
+| `alt`         | string      | `""`     | Alternative text for accessibility       |
+| `loading`     | string      | `"lazy"` | Native lazy-loading behavior             |
+| `style`       | object      | —        | Inline styles passed to the `img` tag    |
+| ...rest       | `img` props | —        | Native HTML `<img>` props supported      |
 
 ---
 
