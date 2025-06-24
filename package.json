@@ -51,7 +51,7 @@
 	"homepage": "https://github.com/chrisachoo/smart-image#readme",
 	"lint-staged": {
 		"*.{json,md}": "pnpm format",
-		"*.{ts,tsx}": "pnpm lint:fix"
+		"*.{ts,tsx}": "pnpm lint"
 	},
 	"engines": {
 		"node": ">=18"
