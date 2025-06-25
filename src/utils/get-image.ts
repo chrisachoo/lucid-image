@@ -23,7 +23,7 @@ export function getImage({
 		width?: number
 	} {
 	const isRemote = /^https?:\/\//.test(src)
-	const normalize = (s: string): string => s.startsWith("/") ? s : `/${s}`
+	const normalize = (s: string): string => (s.startsWith("/") ? s : `/${s}`)
 	const fullSrc = isRemote ? src : basePath + normalize(src)
 	const fallback = fallbackSrc ? basePath + normalize(fallbackSrc) : undefined
 

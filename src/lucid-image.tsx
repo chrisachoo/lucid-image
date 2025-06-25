@@ -21,7 +21,9 @@ export function LucidImage({
 	...rest
 }: LucidImageProps): JSX.Element {
 	const resolvedSrc = resolveImage(src, basePath)
-	const resolvedFallback = fallbackSrc ? resolveImage(fallbackSrc, basePath) : undefined
+	const resolvedFallback = fallbackSrc
+		? resolveImage(fallbackSrc, basePath)
+		: undefined
 
 	const handleError: React.ReactEventHandler<HTMLImageElement> = (e) => {
 		if (resolvedFallback && e.currentTarget.src !== resolvedFallback) {
