@@ -1,2 +1,3 @@
-export { LucideImage } from "./lucide-image"
-export type { LucideImageProps } from "./lucide-image"
+export { LucidImage } from "./lucid-image"
+export type { LucidImageProps } from "./lucid-image"
+export { getImage } from './utils/get-image'
