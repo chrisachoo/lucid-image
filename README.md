@@ -8,6 +8,7 @@ A modern, lightweight React image component with built-in **lazy loading**, **bl
 - 🌀 Blur-up preview before full image loads
 - 🚨 Fallback image if the main source fails
 - 🧠 Smart handling of local/public and remote image paths
+- 📦 Optional `getImage()` helper with CDN + image size support
 - ⚡ Works out of the box with React 18+
 - 🪶 Tiny and dependency-free (no external image libraries!)
 
@@ -15,48 +16,48 @@ A modern, lightweight React image component with built-in **lazy loading**, **bl
 
 ## 📦 Installation
 
-Using your preferred package manager:
-
 ```bash
 pnpm add lucid-image
-# or
-npm install lucid-image
-# or
-yarn add lucid-image
 ```
 
 ---
 
 ## 🛠️ Usage
 
-```tsx
-import { SmartImage } from "lucid-image"
+### Basic usage (from `/public`)
 
-;<SmartImage
-	src="/images/photo.jpg" // required
-	alt="Sample Image" // optional alt text
-	blurSrc="/images/photo-blur.jpg" // optional low-res placeholder
-	fallbackSrc="/images/fallback.jpg" // optional fallback image
-	width={300}
-	style={{ borderRadius: 8 }}
+```tsx
+import { LucidImage } from "lucid-image"
+
+<LucidImage
+	src="/images/photo.jpg"
+	alt="Photo"
+	blurSrc="/images/photo-blur.jpg"
+	fallbackSrc="/images/fallback.jpg"
 />
 ```
 
-> ✅ `src` defaults to loading from `/public` unless a full `https://` URL is provided.
+### Advanced: Using `getImage()` (Optional)
 
----
+```tsx
+import { getImage, LucidImage } from "lucid-image"
 
-## 🧪 Local Testing
+const image = getImage({
+	basePath: "/images",
+	cdn: "vercel", // or 'cloudflare'
+	fallbackSrc: "/images/fallback.jpg",
+	src: "/images/photo.jpg"
+})
 
-You can run the example app:
-
-```bash
-cd example
-pnpm install
-pnpm run dev
+export function Example() {
+	return (
+		<LucidImage
+			{...image}
+			alt="Optimized image"
+		/>
+	)
+}
 ```
-
-Ensure your images are placed under `example/public/images/`.
 
 ---
 
@@ -75,23 +76,32 @@ Ensure your images are placed under `example/public/images/`.
 
 ---
 
+## 🔧 getImage() (Optional Build-Time Helper)
+
+`getImage()` helps you:
+
+- Normalize image paths
+- Apply CDN URLs (Vercel, Cloudflare)
+- Automatically detect width & height for local `/public` files (via `image-size`)
+
+```ts
+getImage({
+	basePath: "/images",
+	cdn: "vercel",
+	publicDir: "public",
+	src: "/photo.jpg"
+})
+```
+
+---
+
 ## 🧾 License
 
 MIT — Free for personal and commercial use.
 
----
+## 🙋 Support
 
-## 🙋 Support or Contributions
-
-Want to report a bug, request a feature, or contribute?
-Open an [issue](https://github.com/chrisachoo/lucid-image/issues) or submit a PR. Contributions welcome!
-
----
-
-## 🔗 Related
-
-- Works perfectly with Vite, Next.js, Astro, Remix, CRA, and more!
-- Consider combining with a CDN for dynamic `blurSrc` or fallback generation
+Open an [issue](https://github.com/chrisachoo/lucid-image/issues) or PR. Contributions welcome!
 
 ---
 

@@ -5,6 +5,7 @@ tsup.config.ts
 .vscode/
 node_modules/
 coverage/
+example/
 test/
 *.test.ts
 *.test.tsx
