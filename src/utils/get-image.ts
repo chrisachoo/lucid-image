@@ -6,6 +6,29 @@ type GetImageOptions = {
 	publicDir?: string // for resolving absolute file path
 }
 
+/**
+ * Resolves and returns the appropriate image source path based on the environment,
+ * base path, CDN configuration, and optionally includes image dimensions (on server).
+ *
+ * @param {GetImageOptions} options - Configuration options for resolving the image.
+ * @param {string} options.src - The main image source path or remote URL.
+ * @param {string} [options.fallbackSrc] - Optional fallback image path (relative).
+ * @param {string} [options.basePath] - A base path to prefix to local image paths.
+ * @param {"vercel" | "cloudflare" | "none" | "auto"} [options.cdn] - CDN configuration to optimize image delivery.
+ * @param {string} [options.publicDir] - Directory used to resolve local image dimensions on the server.
+ *
+ * @returns {{
+ *   src: string,
+ *   fallbackSrc?: string,
+ *   width?: number,
+ *   height?: number
+ * }} - The resolved image path (with optional CDN applied), fallback path, and dimensions (if available).
+ *
+ * Notes:
+ * - If a remote image URL is provided, it is returned as-is (with CDN applied if enabled).
+ * - If running in a Node.js (server) context and the image is local, it attempts to resolve dimensions using `image-size`.
+ * - CDN options currently support "vercel" (Next.js image optimization) and "cloudflare" (Image Delivery).
+ */
 export function getImage({
 	basePath = "",
 	cdn = "none",
