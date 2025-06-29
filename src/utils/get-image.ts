@@ -1,7 +1,3 @@
-import fs from "node:fs"
-import path from "node:path"
-import imageSize from "image-size"
-
 type GetImageOptions = {
 	src: string
 	fallbackSrc?: string
@@ -35,23 +31,28 @@ export function getImage({
 		cdnSrc = `https://imagedelivery.net/YOUR_ACCOUNT_HASH/${fullSrc}/public`
 	}
 
-	// Local image dimension (only if src is local)
+	// Only resolve image dimensions on the server
 	let width: number | undefined
 	let height: number | undefined
 
-	if (!isRemote) {
-		try {
-			const imagePath = path.resolve(process.cwd(), publicDir, normalize(src))
-			const buffer = fs.readFileSync(imagePath)
-			const dimensions = imageSize(buffer)
-			if (dimensions.width && dimensions.height) {
-				width = dimensions.width
-				height = dimensions.height
+	if (typeof window === "undefined" && !isRemote) {
+		(async () => {
+			const fs = await import("node:fs")
+			const path = await import("node:path")
+			const imageSize = (await import("image-size")).default
+			try {
+				const imagePath = path.resolve(process.cwd(), publicDir, normalize(src))
+				const buffer = fs.readFileSync(imagePath)
+				const dimensions = imageSize(buffer)
+				if (dimensions.width && dimensions.height) {
+					width = dimensions.width
+					height = dimensions.height
+				}
 			}
-		}
-		catch (err) {
-			console.warn(`[lucid-image] Unable to resolve image size: ${err}`)
-		}
+			catch (err) {
+				console.warn(`[lucid-image] Unable to resolve image size: ${err}`)
+			}
+		})()
 	}
 
 	return {
