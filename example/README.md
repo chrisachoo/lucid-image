@@ -1,69 +1,65 @@
-# React + TypeScript + Vite
+# 🧪 Lucid Image Example Playground
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a demo app for the [`lucid-image`](https://npmjs.com/package/lucid-image) React component.
 
-Currently, two official plugins are available:
+It showcases:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ✅ Basic `<LucidImage />` usage
+- 🌫️ Blur-up preview image
+- 🌀 Shimmer loading skeleton
+- 💥 Fallback image switching
+- 🔁 Tab-based demo switcher (Basic / Advanced)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📦 Installation
 
-```js
-export default tseslint.config([
-	globalIgnores(["dist"]),
-	{
-		extends: [
-			// Other configs...
-
-			// Remove tseslint.configs.recommended and replace with this
-			...tseslint.configs.recommendedTypeChecked,
-			// Alternatively, use this for stricter rules
-			...tseslint.configs.strictTypeChecked,
-			// Optionally, add this for stylistic rules
-			...tseslint.configs.stylisticTypeChecked
-
-			// Other configs...
-		],
-		files: ["**/*.{ts,tsx}"],
-		languageOptions: {
-			parserOptions: {
-				project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-				tsconfigRootDir: import.meta.dirname
-			}
-			// other options...
-		}
-	}
-])
+```bash
+pnpm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚀 Run locally
 
-```js
-import reactDom from "eslint-plugin-react-dom"
-// eslint.config.js
-import reactX from "eslint-plugin-react-x"
+```bash
+pnpm dev
+```
 
-export default tseslint.config([
-	globalIgnores(["dist"]),
-	{
-		extends: [
-			// Other configs...
-			// Enable lint rules for React
-			reactX.configs["recommended-typescript"],
-			// Enable lint rules for React DOM
-			reactDom.configs.recommended
-		],
-		files: ["**/*.{ts,tsx}"],
-		languageOptions: {
-			parserOptions: {
-				project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-				tsconfigRootDir: import.meta.dirname
-			}
-			// other options...
-		}
-	}
-])
+## 🧱 Build static site
+
+```bash
+pnpm build
+```
+
+## 🌐 Preview locally
+
+```bash
+pnpm preview
+```
+
+## 🚢 Deploy to GitHub Pages (auto via CI)
+
+This repo is set up to deploy the example to GitHub Pages using GitHub Actions.
+
+---
+
+## 🔗 Live demo
+
+```
+https://chrisachoo.github.io/lucid-image/
+```
+
+---
+
+## 🛠 `vite.config.ts` for GitHub Pages compatibility
+
+Make sure this is inside your `example/vite.config.ts`:
+
+```ts
+import { defineConfig } from "vite"
+import react from "@vitejs/plugin-react"
+
+export default defineConfig({
+	base: "/lucid-image/", // match your GitHub repo name!
+	plugins: [react()]
+})
 ```
