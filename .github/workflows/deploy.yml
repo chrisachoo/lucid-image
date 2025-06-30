@@ -16,7 +16,7 @@ jobs:
         working-directory: example
 
     steps:
-      - name: ⬇️ Checkout
+      - name: ⬇️ Checkout code
         uses: actions/checkout@v4
 
       - name: 📦 Setup Node
@@ -25,10 +25,16 @@ jobs:
           node-version: 18
           cache: 'pnpm'
 
+      - name: 🔧 Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8 # or latest version you're using
+          run_install: false
+
       - name: 📥 Install dependencies
         run: pnpm install
 
-      - name: 🛠 Build example
+      - name: 🛠 Build Vite example
         run: pnpm build
 
       - name: 🚀 Deploy to GitHub Pages
