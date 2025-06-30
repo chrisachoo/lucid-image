@@ -29,7 +29,7 @@ pnpm add lucid-image
 ```tsx
 import { LucidImage } from "lucid-image"
 
-;<LucidImage
+<LucidImage
 	src="/images/photo.jpg"
 	alt="Photo"
 	blurSrc="/images/photo-blur.jpg"

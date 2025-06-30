@@ -19,4 +19,4 @@ export function getImageSizeOnServer(imagePath: string) {
 	const imageSize = require("image-size")
 	const buffer = fs.readFileSync(imagePath)
 	return imageSize(buffer)
-} 
+}

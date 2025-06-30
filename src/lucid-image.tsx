@@ -46,7 +46,10 @@ export function LucidImage({
 	const fallback = fallbackSrc ? resolveImage(fallbackSrc, basePath) : undefined
 
 	const blurClass = blurSrc ? "lucid-blur" : ""
-	const blurStyle = blurSrc && !loaded ? { filter: "blur(10px)", transition: "filter 0.3s" } : undefined
+	const blurStyle =
+		blurSrc && !loaded
+			? { filter: "blur(10px)", transition: "filter 0.3s" }
+			: undefined
 
 	function handleError(e: React.SyntheticEvent<HTMLImageElement>): void {
 		if (fallback && !hasSwapped.current && e.currentTarget.src !== fallback) {
