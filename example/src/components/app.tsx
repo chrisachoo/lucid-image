@@ -1,14 +1,31 @@
+/**
+ * App component for Lucid Image demo.
+ *
+ * Demonstrates usage of getImage and LucidImage components.
+ *
+ * Note: Uses import.meta.env.BASE_URL to dynamically resolve the correct base path for images,
+ * ensuring compatibility with Vite's base config (e.g., when base: "/lucid-image/" is set).
+ */
 import type { JSX } from "react"
 import { getImage, LucidImage } from "lucid-image"
 
+/**
+ * Main application component.
+ *
+ * - Uses getImage to build the image object with a dynamic base path.
+ * - Renders a LucidImage with fallback and local resolution support.
+ * - The image path is constructed using import.meta.env.BASE_URL to respect Vite's base config.
+ */
 export function App(): JSX.Element {
 	// Build-time helper to normalize paths and apply fallback
+	//
+	// import.meta.env.BASE_URL ensures the image path works with any Vite base config.
 	const img = getImage({
-		basePath: "/images",
+		basePath: `${import.meta.env.BASE_URL}images`, // Dynamic base path for images
 		cdn: "none",
 		fallbackSrc: "fallback.jpg",
 		publicDir: "../public",
-		src: "cat-2.jpg"
+		src: "cat-1.jpg"
 	})
 
 	return (
