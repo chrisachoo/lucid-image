@@ -1,12 +1,34 @@
+/**
+ * AdvancedImageDemo component for Lucid Image advanced demo.
+ *
+ * Demonstrates advanced usage of getImage and LucidImage components, including:
+ * - Dynamic image switching (simulate broken image)
+ * - Blur-up preview and shimmer loading overlay
+ * - Fallback image support
+ *
+ * Note: Uses import.meta.env.BASE_URL to dynamically resolve the correct base path for images,
+ * ensuring compatibility with Vite's base config (e.g., when base: "/lucid-image/" is set).
+ */
 import type { JSX } from "react"
 import { getImage, LucidImage } from "lucid-image"
 import { useState } from "react"
 
+/**
+ * Advanced image demo component.
+ *
+ * - Uses getImage to build the image object with a dynamic base path.
+ * - Allows toggling between a valid and broken image to demonstrate fallback.
+ * - Renders a LucidImage with blur-up, shimmer, and fallback support.
+ * - The image path is constructed using import.meta.env.BASE_URL to respect Vite's base config.
+ */
 export function AdvancedImageDemo(): JSX.Element {
 	const [broken, setBroken] = useState(false)
 
+	// Build-time helper to normalize paths and apply fallback
+	//
+	// import.meta.env.BASE_URL ensures the image path works with any Vite base config.
 	const img = getImage({
-		basePath: "/images",
+		basePath: `${import.meta.env.BASE_URL}images`, // Dynamic base path for images
 		cdn: "none",
 		fallbackSrc: "fallback.jpg",
 		publicDir: "../public",
