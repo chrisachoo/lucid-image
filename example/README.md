@@ -55,8 +55,8 @@ https://chrisachoo.github.io/lucid-image/
 Make sure this is inside your `example/vite.config.ts`:
 
 ```ts
-import { defineConfig } from "vite"
 import react from "@vitejs/plugin-react"
+import { defineConfig } from "vite"
 
 export default defineConfig({
 	base: "/lucid-image/", // match your GitHub repo name!

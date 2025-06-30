@@ -54,11 +54,13 @@ import { LucidImage } from "lucid-image"
 import { getImage, LucidImage } from "lucid-image"
 
 const image = getImage({
-	src: "images/cat-1.jpg",
-	cdn: "vercel"
+	cdn: "vercel",
+	src: "images/cat-1.jpg"
 })
 
-<LucidImage {...image} alt="Optimized image" />
+export function Example() {
+	return <LucidImage {...image} alt="Optimized image" />
+}
 // Renders: /_next/image?url=public/images/cat-1.jpg&w=1080&q=75
 ```
 
@@ -66,12 +68,14 @@ const image = getImage({
 
 ```tsx
 const image = getImage({
-	src: "images/cat-1.jpg",
 	cdn: "cloudflare",
-	cloudflareAccountHash: "abc123xyz"
+	cloudflareAccountHash: "abc123xyz",
+	src: "images/cat-1.jpg"
 })
 
-<LucidImage {...image} alt="Cloudflare image" />
+export function Example() {
+	return <LucidImage {...image} alt="Cloudflare image" />
+}
 // Renders: https://imagedelivery.net/abc123xyz/public/images/cat-1.jpg/public
 ```
 
@@ -82,7 +86,9 @@ const image = getImage({
 	src: "https://example.com/image.jpg"
 })
 
-<LucidImage {...image} alt="Remote image" />
+export function Example() {
+	<LucidImage {...image} alt="Remote image" />
+}
 // Renders: https://example.com/image.jpg
 ```
 
@@ -93,6 +99,7 @@ const image = getImage({
 	cdn: "cloudflare",
 	src: "images/cat-1.jpg"
 })
+
 // Console warning: Cloudflare CDN selected but no account hash provided.
 // Renders: https://imagedelivery.net/default/public/images/cat-1.jpg/public
 ```

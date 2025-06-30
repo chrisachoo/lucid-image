@@ -33,9 +33,9 @@ export function getImage({
 	publicDir = "public",
 	src
 }: GetImageOptions): {
-	fallbackSrc?: string
-	src: string
-} {
+		fallbackSrc?: string
+		src: string
+	} {
 	const isRemote = /^https?:\/\//.test(src)
 	const effectiveBasePath = basePath ?? publicDir
 
@@ -48,13 +48,15 @@ export function getImage({
 	let cdnSrc = fullSrc
 	if (cdn === "vercel") {
 		cdnSrc = `/_next/image?url=${encodeURIComponent(fullSrc)}&w=1080&q=75`
-	} else if (cdn === "cloudflare") {
+	}
+	else if (cdn === "cloudflare") {
 		if (!cloudflareAccountHash) {
 			console.warn(
 				"[lucid-image] Cloudflare CDN selected but no account hash provided."
 			)
 			cdnSrc = `https://imagedelivery.net/default/${fullSrc}/public`
-		} else {
+		}
+		else {
 			cdnSrc = `https://imagedelivery.net/${cloudflareAccountHash}/${fullSrc}/public`
 		}
 	}

@@ -16,12 +16,13 @@ export type LucidImageProps = {
  * - Optional blur placeholder while loading
  * - All native <img> props supported
  *
- * @param {string} src - The main image source (required)
- * @param {string} [fallbackSrc] - Fallback image if the main one fails
- * @param {string} [blurSrc] - Blur placeholder while loading
- * @param {string} [basePath] - Prefix for image sources
- * @param {string} [alt] - Alt text for the image
- * @param {...any} rest - All other valid <img> attributes
+ * @param {LucidImageProps} props - The props object for LucidImage.
+ * @property {string} src - The main image source (required)
+ * @property {string} [fallbackSrc] - Fallback image if the main one fails
+ * @property {string} [blurSrc] - Blur placeholder while loading
+ * @property {string} [basePath] - Prefix for image sources
+ * @property {string} [alt] - Alt text for the image
+ *
  * @returns {JSX.Element} An <img> element with fallback and blur support
  *
  * All other props are passed to the <img> element as attributes.
@@ -46,8 +47,8 @@ export function LucidImage({
 	const fallback = fallbackSrc ? resolveImage(fallbackSrc, basePath) : undefined
 
 	const blurClass = blurSrc ? "lucid-blur" : ""
-	const blurStyle =
-		blurSrc && !loaded
+	const blurStyle
+		= blurSrc && !loaded
 			? { filter: "blur(10px)", transition: "filter 0.3s" }
 			: undefined
 
