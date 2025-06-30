@@ -22,9 +22,9 @@ pnpm add lucid-image
 
 ---
 
-## 🛠️ Usage
+## 🛠️ Usage Examples
 
-### Basic usage (from `/public`)
+### 1. Basic usage (from `/public`)
 
 ```tsx
 import { LucidImage } from "lucid-image"
@@ -37,23 +37,87 @@ import { LucidImage } from "lucid-image"
 />
 ```
 
-### Advanced: Using `getImage()` (Optional)
+### 2. Custom basePath
+
+```tsx
+<LucidImage
+	src="cat-2.jpg"
+	basePath="/static/assets"
+	alt="Cat"
+/>
+// Renders: /static/assets/cat-2.jpg
+```
+
+### 3. With Vercel CDN
 
 ```tsx
 import { getImage, LucidImage } from "lucid-image"
 
 const image = getImage({
-	basePath: "/images",
-	cdn: "vercel", // or 'cloudflare'
-	fallbackSrc: "/images/fallback.jpg",
-	src: "/images/photo.jpg"
+	src: "images/cat-1.jpg",
+	cdn: "vercel"
 })
 
+<LucidImage {...image} alt="Optimized image" />
+// Renders: /_next/image?url=public/images/cat-1.jpg&w=1080&q=75
+```
+
+### 4. With Cloudflare CDN (dynamic account hash)
+
+```tsx
+const image = getImage({
+	src: "images/cat-1.jpg",
+	cdn: "cloudflare",
+	cloudflareAccountHash: "abc123xyz"
+})
+
+<LucidImage {...image} alt="Cloudflare image" />
+// Renders: https://imagedelivery.net/abc123xyz/public/images/cat-1.jpg/public
+```
+
+### 5. Remote image (CDN or not)
+
+```tsx
+const image = getImage({
+	src: "https://example.com/image.jpg"
+})
+
+<LucidImage {...image} alt="Remote image" />
+// Renders: https://example.com/image.jpg
+```
+
+### 6. Cloudflare CDN with missing account hash (shows warning, uses placeholder)
+
+```tsx
+const image = getImage({
+	cdn: "cloudflare",
+	src: "images/cat-1.jpg"
+})
+// Console warning: Cloudflare CDN selected but no account hash provided.
+// Renders: https://imagedelivery.net/default/public/images/cat-1.jpg/public
+```
+
+---
+
+## 🧩 Example Component
+
+```tsx
+import { getImage, LucidImage } from "lucid-image"
+
 export function Example() {
+	const image = getImage({
+		blurSrc: "/images/photo-blur.jpg",
+		cdn: "cloudflare",
+		cloudflareAccountHash: "abc123xyz",
+		fallbackSrc: "/images/fallback.jpg",
+		src: "/images/photo.jpg"
+	})
+
 	return (
 		<LucidImage
 			{...image}
 			alt="Optimized image"
+			style={{ borderRadius: 8, width: 400 }}
 		/>
 	)
 }
