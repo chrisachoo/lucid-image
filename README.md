@@ -166,6 +166,13 @@ getImage({
 
 ---
 
+## 🔗 Live Demo
+
+Check out a live example here:  
+👉 [chrisachoo.github.io/lucid-image](https://chrisachoo.github.io/lucid-image/)
+
+Explore real usage of `lucid-image` with CDN resolution, responsive loading, and more.
+
 ## 🧾 License
 
 MIT — Free for personal and commercial use.
