@@ -28,9 +28,15 @@ export function App(): JSX.Element {
 			</div>
 
 			<p className="text-slate-400 text-sm mt-4 text-center max-w-sm">
-				This image is powered by{" "}
-				<code className="text-indigo-400">getImage()</code> and{" "}
-				<code className="text-indigo-400">LucidImage</code> — including optional
+				This image is powered by
+				{" "}
+				<code className="text-indigo-400">getImage()</code>
+				{" "}
+				and
+				{" "}
+				<code className="text-indigo-400">LucidImage</code>
+				{" "}
+				— including optional
 				fallback and local resolution.
 			</p>
 		</section>

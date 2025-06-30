@@ -10,6 +10,7 @@ export function LucidImageTabs(): JSX.Element {
 		<main className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900  text-white flex flex-col items-center justify-start pt-10 px-4">
 			<nav className="flex space-x-4 mb-8">
 				<button
+					type="button"
 					className={`px-4 py-2 rounded-lg font-medium transition border ${
 						activeTab === "basic"
 							? "bg-indigo-600 border-indigo-500"
@@ -20,6 +21,7 @@ export function LucidImageTabs(): JSX.Element {
 					🧊 Basic Demo
 				</button>
 				<button
+					type="button"
 					className={`px-4 py-2 rounded-lg font-medium transition border ${
 						activeTab === "advanced"
 							? "bg-indigo-600 border-indigo-500"
