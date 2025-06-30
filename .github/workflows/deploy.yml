@@ -19,16 +19,16 @@ jobs:
       - name: ⬇️ Checkout code
         uses: actions/checkout@v4
 
-      - name: 📦 Setup Node
+      - name: 📦 Setup Node.js 20 LTS with pnpm cache
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: '20' # Use latest stable Node 20
           cache: 'pnpm'
 
-      - name: 🔧 Install pnpm
+      - name: 🔧 Setup pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 8 # or latest version you're using
+          version: 8
           run_install: false
 
       - name: 📥 Install dependencies
@@ -41,5 +41,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./example/dist
+          publish_dir: example/dist
           publish_branch: gh-pages
