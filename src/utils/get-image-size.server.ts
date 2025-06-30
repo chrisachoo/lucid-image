@@ -14,8 +14,10 @@
  *
  * @note This function uses Node.js modules and should only be called in server-side code.
  */
-export function getImageSizeOnServer(imagePath: string) {
-	const fs = require("fs")
+export function getImageSizeOnServer(
+	imagePath: string
+): { width: number; height: number; type?: string; orientation?: number } {
+	const fs = require("node:fs")
 	const imageSize = require("image-size")
 	const buffer = fs.readFileSync(imagePath)
 	return imageSize(buffer)
