@@ -22,8 +22,8 @@ jobs:
       - name: 📦 Setup Node.js 20 LTS with pnpm cache
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # Use latest stable Node 20
-          cache: 'pnpm'
+          node-version: "20" # Use latest stable Node 20
+          cache: "pnpm"
 
       - name: 🔧 Setup pnpm
         uses: pnpm/action-setup@v2

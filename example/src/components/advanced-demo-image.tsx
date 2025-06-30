@@ -34,7 +34,7 @@ export function AdvancedImageDemo(): JSX.Element {
 			</div>
 
 			<button
-				onClick={() => setBroken(prev => !prev)}
+				onClick={() => setBroken((prev) => !prev)}
 				className="bg-indigo-600 hover:bg-indigo-500 text-white font-medium px-6 py-2 rounded-lg transition"
 			>
 				{broken ? "🔄 Reset Image" : "💥 Simulate Broken Image"}
